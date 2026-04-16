@@ -19,6 +19,24 @@ const AnomalyFeed = ({ anomalies }) => {
               <span>Price: ${anomaly.price.toFixed(2)}</span>
               <span>Vol: {anomaly.volume.toFixed(4)}</span>
             </div>
+            {anomaly.reason && (
+              <div style={{ marginTop: '0.2rem', fontSize: '0.8rem', color: 'var(--accent-danger)', fontWeight: 'bold' }}>
+                ↳ {anomaly.reason}
+              </div>
+            )}
+            {anomaly.suggestion && (
+              <div style={{ 
+                  marginTop: '0.5rem', 
+                  fontSize: '0.75rem', 
+                  color: 'var(--accent-primary)', 
+                  backgroundColor: 'rgba(0, 240, 255, 0.1)',
+                  padding: '8px',
+                  borderRadius: '4px',
+                  borderLeft: '2px solid var(--accent-primary)'
+                }}>
+                {anomaly.suggestion}
+              </div>
+            )}
           </div>
         ))
       )}
