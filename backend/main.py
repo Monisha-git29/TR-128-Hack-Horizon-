@@ -18,9 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 1. LOAD USER'S NATIVE DETECTOR LOGIC
-import sys
-sys.path.append(r'd:\SRM trichy\backend')
+# 1. LOAD NATIVE DETECTOR LOGIC (Relative Path for Cloud Deployment)
 try:
     from detector import AnomalyDetector
     detector_engine = AnomalyDetector(window_size=100)

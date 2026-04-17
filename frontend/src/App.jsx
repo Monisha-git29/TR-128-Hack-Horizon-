@@ -20,8 +20,9 @@ function App() {
   const ws = useRef(null);
 
   useEffect(() => {
-    // Connect to FastAPI WebSocket
-    ws.current = new WebSocket('ws://localhost:8000/ws');
+    // Vercel deployment dynamically accesses env, localhost defaults to 8000
+    const BACKEND_WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws';
+    ws.current = new WebSocket(BACKEND_WS_URL);
 
     ws.current.onopen = () => {
       console.log("Connected to backend");
