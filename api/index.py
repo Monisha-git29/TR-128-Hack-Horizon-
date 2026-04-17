@@ -1,15 +1,15 @@
-from fastapi import FastAPI
+# api/index.py
 
-app = FastAPI()
+def handler(request):
+    path = request.get("query", {}).get("path")
 
-@app.get("/")
-async def root():
-    return {"message": "Backend working 🚀"}
+    if path == "hello":
+        return {
+            "statusCode": 200,
+            "body": '{"msg":"Hello from backend"}'
+        }
 
-@app.get("/hello")
-async def hello():
-    return {"msg": "Hello from backend"}
-
-# 👇 THIS IS CRITICAL
-def handler(request, context):
-    return app
+    return {
+        "statusCode": 200,
+        "body": '{"message":"Backend working 🚀"}'
+    }
